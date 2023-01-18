@@ -1,14 +1,8 @@
-
-
 // const fs = require('fs').writeFileSync;
 
 // fs("hello2.txt", "like and subscribe");
 
-
-
 //  ----------->create server
-
-
 
 // const http = require('http');
 // const data = require('./basic-api-tutorial/first');
@@ -24,11 +18,7 @@
 //     res.end();
 // }).listen(5000)
 
-
-
 // ------------->branch/Input-from-cmd
-
-
 
 // console.log(process.argv) // ['/usr/local/bin/node', '/Users/vivek/Desktop/Node/index.js' ]
 
@@ -45,9 +35,7 @@
 //     console.log("Invalid Input");
 // }
 
-
 // ----------------> branch/file-list
-
 
 // const fs = require('fs');
 // const path = require('path');
@@ -62,9 +50,7 @@
 //     console.log(files)
 // });
 
-
 // ------------> branch/crud
-
 
 // const fs = require('fs');
 // const path = require('path');
@@ -91,13 +77,9 @@
 
 // fs.unlinkSync(`${dirPath}/fruit.txt`); // delete
 
-
-
 // --------------> branch/asynchronus
 
-
-
-// let a = 20; 
+// let a = 20;
 // let b = 0;
 
 // let waitingData = new Promise((resolve, reject)=>{
@@ -111,3 +93,17 @@
 //     console.log(a+b);
 // });
 
+// -------------> branch/express
+
+// const express = require("express");
+// const app = express();
+
+// app.get("", (req, res) => {
+//   res.send("Hello, This is home page");
+// });
+
+// app.get("/about", (req, res) => {
+//   res.send("This is about page");
+// });
+
+// app.listen(5000);
