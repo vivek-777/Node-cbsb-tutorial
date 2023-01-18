@@ -44,3 +44,19 @@
 // }else{
 //     console.log("Invalid Input");
 // }
+
+
+// ----------------> file-list
+
+// const fs = require('fs');
+// const path = require('path');
+
+// const dirPath = path.join(__dirname, 'files');
+
+// // for(i=0; i<3; i++){
+// //     fs.writeFileSync(`${dirPath}/hello${i}.txt`, "a simple text file");
+// // };
+
+// fs.readdir(dirPath, (err, files)=>{
+//     console.log(files)
+// });
