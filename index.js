@@ -95,15 +95,19 @@
 
 // -------------> branch/express
 
-// const express = require("express");
-// const app = express();
+const express = require("express");
+const app = express();
 
-// app.get("", (req, res) => {
-//   res.send("Hello, This is home page");
-// });
+app.get("", (req, res) => {
+  // console.log("data sent by browser ", req.query.name); //http://localhost:5000/?name=vivek
+  res.send("<h1>Hello, This is home page</h1><a href='/about'>About</a>");
+});
 
-// app.get("/about", (req, res) => {
-//   res.send("This is about page");
-// });
+app.get("/about", (req, res) => {
+  res.send({
+    name: "vivek",
+    email: "vivek@gmail.com",
+  });
+});
 
-// app.listen(5000);
+app.listen(5000);
