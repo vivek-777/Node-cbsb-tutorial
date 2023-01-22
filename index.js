@@ -95,19 +95,41 @@
 
 // -------------> branch/express
 
+// const express = require("express");
+// const app = express();
+
+// app.get("", (req, res) => {
+//   // console.log("data sent by browser ", req.query.name); //http://localhost:5000/?name=vivek
+//   res.send("<h1>Hello, This is home page</h1><a href='/about'>About</a>");
+// });
+
+// app.get("/about", (req, res) => {
+//   res.send({
+//     name: "vivek",
+//     email: "vivek@gmail.com",
+//   });
+// });
+
+// app.listen(5000);
+
+// ----------------> branch/html-json-render
+
 const express = require("express");
+const path = require("path");
 const app = express();
 
+const publicPath = path.join(__dirname, "public");
+// app.use(express.static(publicPath)); // static use to load static content
 app.get("", (req, res) => {
-  // console.log("data sent by browser ", req.query.name); //http://localhost:5000/?name=vivek
-  res.send("<h1>Hello, This is home page</h1><a href='/about'>About</a>");
+  res.sendFile(`${publicPath}/index.html`);
 });
-
 app.get("/about", (req, res) => {
-  res.send({
-    name: "vivek",
-    email: "vivek@gmail.com",
-  });
+  res.sendFile(`${publicPath}/about.html`);
 });
-
+app.get("/home", (req, res) => {
+  res.sendFile(`${publicPath}/home.html`);
+});
+app.get("*", (req, res) => {
+  res.sendFile(`${publicPath}/page_not_found.html`);
+});
 app.listen(5000);
