@@ -136,6 +136,28 @@
 
 // -------------------> branch/Template-ejs
 
+// const express = require("express");
+// const path = require("path");
+// const app = express();
+
+// app.set("view engine", "ejs");
+
+// const publicPath = path.join(__dirname, "public");
+
+// app.get("/profile", (req, res) => {
+//   const user = {
+//     name: "vivek",
+//     city: "noida",
+//   };
+//   res.render("profile", { user });
+// });
+// app.get("*", (req, res) => {
+//   res.sendFile(`${publicPath}/page_not_found.html`);
+// });
+// app.listen(5000);
+
+// -------------------> branch/dynamic-page
+
 const express = require("express");
 const path = require("path");
 const app = express();
@@ -148,10 +170,17 @@ app.get("/profile", (req, res) => {
   const user = {
     name: "vivek",
     city: "noida",
+    skills: ["React", "JS", "Html", "CSS"],
   };
   res.render("profile", { user });
 });
+
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
 app.get("*", (req, res) => {
   res.sendFile(`${publicPath}/page_not_found.html`);
 });
+
 app.listen(5000);
