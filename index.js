@@ -158,29 +158,60 @@
 
 // -------------------> branch/dynamic-page
 
+// const express = require("express");
+// const path = require("path");
+// const app = express();
+
+// app.set("view engine", "ejs");
+
+// const publicPath = path.join(__dirname, "public");
+
+// app.get("/profile", (req, res) => {
+//   const user = {
+//     name: "vivek",
+//     city: "noida",
+//     skills: ["React", "JS", "Html", "CSS"],
+//   };
+//   res.render("profile", { user });
+// });
+
+// app.get("/login", (req, res) => {
+//   res.render("login");
+// });
+
+// app.get("*", (req, res) => {
+//   res.sendFile(`${publicPath}/page_not_found.html`);
+// });
+
+// app.listen(5000);
+
+// --------------> branch/middleware
+
 const express = require("express");
-const path = require("path");
 const app = express();
+const reqFilter = require("./middleware");
+const route = express.Router();
 
-app.set("view engine", "ejs");
+// app.use(reqFilter); // For all routes
 
-const publicPath = path.join(__dirname, "public");
+route.use(reqFilter);
 
-app.get("/profile", (req, res) => {
-  const user = {
-    name: "vivek",
-    city: "noida",
-    skills: ["React", "JS", "Html", "CSS"],
-  };
-  res.render("profile", { user });
+app.get("/", (req, res) => {
+  res.send("Welcome to home page");
 });
 
-app.get("/login", (req, res) => {
-  res.render("login");
+route.get("/users", (req, res) => {
+  res.send("Welcome to users page");
 });
 
-app.get("*", (req, res) => {
-  res.sendFile(`${publicPath}/page_not_found.html`);
+route.get("/contact", (req, res) => {
+  res.send("Welcome to contact page");
 });
+
+app.get("/help", (req, res) => {
+  res.send("Welcome to help page");
+});
+
+app.use("/", route);
 
 app.listen(5000);
