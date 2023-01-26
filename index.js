@@ -187,31 +187,49 @@
 
 // --------------> branch/middleware
 
-const express = require("express");
-const app = express();
-const reqFilter = require("./middleware");
-const route = express.Router();
+// const express = require("express");
+// const app = express();
+// const reqFilter = require("./middleware");
+// const route = express.Router();
 
-// app.use(reqFilter); // For all routes
+// // app.use(reqFilter); // For all routes
 
-route.use(reqFilter);
+// route.use(reqFilter);
 
-app.get("/", (req, res) => {
-  res.send("Welcome to home page");
-});
+// app.get("/", (req, res) => {
+//   res.send("Welcome to home page");
+// });
 
-route.get("/users", (req, res) => {
-  res.send("Welcome to users page");
-});
+// route.get("/users", (req, res) => {
+//   res.send("Welcome to users page");
+// });
 
-route.get("/contact", (req, res) => {
-  res.send("Welcome to contact page");
-});
+// route.get("/contact", (req, res) => {
+//   res.send("Welcome to contact page");
+// });
 
-app.get("/help", (req, res) => {
-  res.send("Welcome to help page");
-});
+// app.get("/help", (req, res) => {
+//   res.send("Welcome to help page");
+// });
 
-app.use("/", route);
+// app.use("/", route);
 
-app.listen(5000);
+// app.listen(5000);
+
+// --------------> branch/install-mongodb
+
+const { MongoClient } = require("mongodb");
+
+const url = "mongodb://localhost:27017";
+const client = new MongoClient(url);
+const database = "e-comm";
+
+async function getData() {
+  let result = await client.connect();
+  let db = result.db(database);
+  let collection = db.collection("products");
+  let response = await collection.find({}).toArray();
+  console.log(response);
+}
+
+getData();
